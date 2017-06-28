@@ -25,8 +25,13 @@ class Node(object):
 
 class RangeDict(dict):
 
-    def __init__(self):
+    def __init__(self, mapping=None, iterable=None):
         self._root = None
+
+        #explain init method
+        if mapping or iterable:
+            for k, v in (mapping.items() if mapping else iterable):
+                self[k] = v
 
     def __setitem__(self, r, v):
         if r[1] < r[0]:
